@@ -14,6 +14,9 @@ import org.jboss.weld.junit4.WeldInitiator;
 import org.junit.Rule;
 import org.junit.Test;
 
+import com.github.arielcarrera.cdi.test.config.Listener;
+import com.github.arielcarrera.cdi.test.config.ListenerRegistry;
+
 /**
  * Test of CDI Extension
  * 
@@ -28,9 +31,12 @@ public class ExtensionTest {
     @Inject @Any
     Instance<FooInterface> instance;
     
+    @Inject @Default
+    Instance<ListenerRegistry> registryInstance;
+    
     @Test
     public void testFooEntityListener1() {
-	assertEquals(instance.select(new MyAnnotation.Literal("FooEntityListener")).get().getId(), 1);
+	assertEquals(instance.select(new Listener.Literal(FooEntity.class)).get().getId(), 1);
     }
     
     @Test
@@ -40,17 +46,22 @@ public class ExtensionTest {
     
     @Test
     public void testFooEntityListener3() {
-	assertEquals(instance.select(new MyAnnotation.Literal("FooEntityListener3")).get().getId(), 3);
+	assertEquals(instance.select(new Listener.Literal(FooEntity3.class)).get().getId(), 3);
     }
     
     @Test
     public void testFooEntityListener_notExists() {
-	assertFalse(instance.select(new MyAnnotation.Literal("FooEntityListenerNotExists")).isResolvable());
+	assertFalse(instance.select(new Listener.Literal(FooEntity2.class)).isResolvable());
     }
     
     @Test
     public void testFooEntityListener_duplicate() {
 	assertTrue(instance.select(Any.Literal.INSTANCE).isAmbiguous());
+    }
+    
+    @Test
+    public void testRegistryInjection() {
+	assertTrue(registryInstance.select(Default.Literal.INSTANCE).isResolvable());
     }
 
 }

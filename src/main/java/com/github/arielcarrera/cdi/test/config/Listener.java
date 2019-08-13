@@ -1,4 +1,4 @@
-package com.github.arielcarrera.cdi.test;
+package com.github.arielcarrera.cdi.test.config;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
@@ -11,26 +11,28 @@ import java.lang.annotation.Target;
 import javax.enterprise.util.AnnotationLiteral;
 import javax.inject.Qualifier;
 
+import com.github.arielcarrera.cdi.test.FooInterface;
+
 @Qualifier
 @Target({ TYPE, METHOD, PARAMETER, FIELD })
 @Retention(RUNTIME)
-public @interface MyAnnotation {
+public @interface Listener {
 
-    String value() default "";
+    Class<? extends FooInterface> value();
 
     @SuppressWarnings("all")
-    public static class Literal extends AnnotationLiteral<MyAnnotation> implements MyAnnotation {
+    public static class Literal extends AnnotationLiteral<Listener> implements Listener {
 
-        public static final Literal INSTANCE = new Literal("");
+        public static final Literal INSTANCE = new Literal(null);
 
-        private final String value;
+        private final Class<? extends FooInterface> value;
 
-        public Literal(String id) {
-            this.value = id;
+        public Literal(Class<? extends FooInterface> clazz) {
+            this.value = clazz;
         }
 
         @Override
-        public String value() {
+        public Class<? extends FooInterface> value() {
             return value;
         }
     }

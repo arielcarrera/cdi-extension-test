@@ -11,29 +11,17 @@ import java.lang.annotation.Target;
 import javax.enterprise.util.AnnotationLiteral;
 import javax.inject.Qualifier;
 
-import com.github.arielcarrera.cdi.test.FooInterface;
-
 @Qualifier
 @Target({ TYPE, METHOD, PARAMETER, FIELD })
 @Retention(RUNTIME)
-public @interface Listener {
-
-    Class<? extends FooInterface> value();
+public @interface EntitySelectionListener {
 
     @SuppressWarnings("all")
-    public static class Literal extends AnnotationLiteral<Listener> implements Listener {
+    public static class Literal extends AnnotationLiteral<EntitySelectionListener> implements EntitySelectionListener {
 
-        public static final Literal INSTANCE = new Literal(null);
+        public static final Literal INSTANCE = new Literal();
 
-        private final Class<? extends FooInterface> value;
-
-        public Literal(Class<? extends FooInterface> clazz) {
-            this.value = clazz;
-        }
-
-        @Override
-        public Class<? extends FooInterface> value() {
-            return value;
+        public Literal() {
         }
     }
 }

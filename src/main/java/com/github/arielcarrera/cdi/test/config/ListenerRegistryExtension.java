@@ -3,9 +3,7 @@ package com.github.arielcarrera.cdi.test.config;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.AfterBeanDiscovery;

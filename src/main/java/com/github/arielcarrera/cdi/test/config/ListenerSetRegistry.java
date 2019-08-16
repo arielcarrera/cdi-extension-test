@@ -28,11 +28,11 @@ public class ListenerSetRegistry implements Serializable {
     public synchronized void put(String key, ListenerInterface value) {
 	if (!listenerRegistry.containsKey(key)) {
 	    ListenerSet set = new ListenerSet();
-	    set.add(value);
+	    set.addOperationListener(value);
 	    listenerRegistry.put(key, set);
 	} else {
 	    ListenerSet set = listenerRegistry.get(key);
-	    set.add(value);
+	    set.addOperationListener(value);
 	}
     }
     

@@ -9,7 +9,7 @@ import com.github.arielcarrera.cdi.test.config.Listeners;
  * @author Ariel Carrera
  *
  */
-@Listeners({Listener1.class, Listener2.class})
+@Listeners({EntityOperationListener1.class, EntitySelectionListener1.class})
 @RequestScoped
 public class FooService3 {
 

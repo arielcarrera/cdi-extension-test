@@ -5,10 +5,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Vetoed;
 
 import com.github.arielcarrera.cdi.test.ListenerInterface;
 
-@Dependent
+@Vetoed
 public class ListenerSet implements Serializable {
 
     private static final long serialVersionUID = -3115166732077559919L;

@@ -1,11 +1,11 @@
 package com.github.arielcarrera.cdi.test;
 
-import lombok.Data;
-
 import javax.inject.Inject;
 
 import com.github.arielcarrera.cdi.test.config.ListenerSet;
 import com.github.arielcarrera.cdi.test.config.Listeners;
+
+import lombok.Data;
 
 @Listeners({EntityOperationListener1.class})
 @Data
@@ -16,11 +16,11 @@ public class FooService1 implements EntityOperationListenerInterface {
 	@Inject
 	private ListenerSet opListeners;
 	
-//	@Inject @EntityOperationListener
+//	@Inject
 //	private EntityOperationListenerInterface listener;
 	
 	
-//	@Inject @EntitySelectionListener
+//	@Inject
 //	private ListenerSet selListeners;
 
 }

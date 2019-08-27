@@ -1,6 +1,5 @@
 package com.github.arielcarrera.cdi.test.config;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -10,7 +9,6 @@ import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.ResolutionException;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.DefinitionException;
 import javax.enterprise.inject.spi.InjectionPoint;
 
 import com.github.arielcarrera.cdi.test.EntityOperationListenerInterface;

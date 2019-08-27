@@ -1,7 +1,11 @@
 package com.github.arielcarrera.cdi.test;
 
-import javax.enterprise.context.RequestScoped;
+import lombok.Data;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
+import com.github.arielcarrera.cdi.test.config.ListenerSet;
 import com.github.arielcarrera.cdi.test.config.Listeners;
 
 /**
@@ -9,11 +13,15 @@ import com.github.arielcarrera.cdi.test.config.Listeners;
  * @author Ariel Carrera
  *
  */
-@Listeners({EntityOperationListener1.class, EntitySelectionListener1.class})
+@Listeners({EntityOperationListener2.class, EntitySelectionListener2.class})
 @RequestScoped
+@Data
 public class FooService3 {
 
 	private int id = 3;
+	
+	@Inject
+	private ListenerSet listeners;
 	
 //	@Inject
 //	private ListenerSet opListeners;	

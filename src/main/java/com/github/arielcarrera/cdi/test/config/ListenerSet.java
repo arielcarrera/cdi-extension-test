@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Vetoed;
 
 import com.github.arielcarrera.cdi.test.ListenerInterface;
@@ -18,10 +17,6 @@ public class ListenerSet implements Serializable {
     
     private final Set<ListenerInterface> selectionListeners = new HashSet<ListenerInterface>();
 
-    public Set<ListenerInterface> getOperationListener(){
-	return operationListeners;
-    }
-    
     public void addOperationListener(ListenerInterface li) {
 	if (!operationListeners.contains(li)) {
 	    synchronized (operationListeners) {
@@ -29,18 +24,28 @@ public class ListenerSet implements Serializable {
 	    }
 	}
     }
-    
-    
-    public Set<ListenerInterface> getSelectionListener(){
-	return selectionListeners;
-    }
-    
     public void addSelectionListener(ListenerInterface li) {
 	if (!selectionListeners.contains(li)) {
 	    synchronized (selectionListeners) {
 		selectionListeners.add(li);
 	    }
 	}
+    }
+    
+    public Set<ListenerInterface> getOperationListeners(){
+	return operationListeners;
+    }
+    
+    public Set<ListenerInterface> getSelectionListeners(){
+	return selectionListeners;
+    }
+    
+    public int getOperationListenersSize() {
+	return operationListeners.size();
+    }
+    
+    public int getSelectionListenersSize() {
+	return selectionListeners.size();
     }
     
 }

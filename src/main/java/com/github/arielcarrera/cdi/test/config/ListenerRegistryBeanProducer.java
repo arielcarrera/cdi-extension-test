@@ -38,6 +38,7 @@ public class ListenerRegistryBeanProducer {
 					throw new ResolutionException("No es posible resolver bean para clase: " +  li.getName());
 				}
 				Bean<? extends Object> bean = bm.resolve(beans);
+				//System.out.println("test:" + bean.getName().toString());
 				ListenerInterface reference = (ListenerInterface) bm.getReference(bean, li, bm.createCreationalContext(bean));
 				if (EntityOperationListenerInterface.class.isAssignableFrom(li)) {
 					result.addOperationListener((EntityOperationListenerInterface)reference);

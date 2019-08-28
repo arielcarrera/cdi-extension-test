@@ -1,23 +1,25 @@
 package com.github.arielcarrera.cdi.test;
 
-import lombok.Data;
-
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.github.arielcarrera.cdi.test.config.ListenerSet;
 import com.github.arielcarrera.cdi.test.config.Listeners;
 
-@Listeners({EntityOperationListener1.class})
+import lombok.Data;
+
+@ApplicationScoped
+@Listeners({EntityOperationListener1.class, FooService6.class})
 @Data
-public class FooService1  implements EntityOperationListenerInterface {
+public class FooService6 implements EntityOperationListenerInterface {
     	
     	private int i = 0;
     
-	private int id = 1;
+	private int id = 6;
 	
 	@Inject
 	private ListenerSet listeners;
-	
+
 	@Override
 	public void setI(int i) {
 	    this.i = i;
@@ -27,7 +29,7 @@ public class FooService1  implements EntityOperationListenerInterface {
 	public int getI() {
 	    return this.i;
 	}
-
+	
 //	@Inject
 //	private EntityOperationListenerInterface listener;
 	

@@ -9,30 +9,30 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.enterprise.util.AnnotationLiteral;
-import javax.inject.Qualifier;
+import javax.enterprise.util.Nonbinding;
 
-import com.github.arielcarrera.cdi.test.FooInterface;
+import com.github.arielcarrera.cdi.test.ListenerInterface;
 
-@Qualifier
 @Target({ TYPE, METHOD, PARAMETER, FIELD })
 @Retention(RUNTIME)
-public @interface Listener {
+public @interface Listeners {
 
-    Class<? extends FooInterface> value();
+    @Nonbinding
+    Class<? extends ListenerInterface>[] value();
 
     @SuppressWarnings("all")
-    public static class Literal extends AnnotationLiteral<Listener> implements Listener {
+    public static class Literal extends AnnotationLiteral<Listeners> implements Listeners {
 
         public static final Literal INSTANCE = new Literal(null);
 
-        private final Class<? extends FooInterface> value;
+        private final Class<? extends ListenerInterface>[] value;
 
-        public Literal(Class<? extends FooInterface> clazz) {
-            this.value = clazz;
+        public Literal(Class<? extends ListenerInterface>[] clazzArray) {
+            this.value = clazzArray;
         }
 
         @Override
-        public Class<? extends FooInterface> value() {
+        public Class<? extends ListenerInterface>[] value() {
             return value;
         }
     }

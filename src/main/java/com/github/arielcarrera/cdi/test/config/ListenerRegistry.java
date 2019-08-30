@@ -7,11 +7,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Vetoed;
 
 import com.github.arielcarrera.cdi.test.ListenerInterface;
 
-@ApplicationScoped
+@Vetoed
 public class ListenerRegistry implements Serializable {
 
     private static final long serialVersionUID = -3115166732077559919L;
